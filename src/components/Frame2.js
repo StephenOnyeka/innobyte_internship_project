@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageFrame from "./ImageFrame";
 import { GoogleLoginButton } from "react-social-login-buttons";
 
 function Frame2() {
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show)
+  }
+
   return (
     <div>
       <div id="Frame2" className="p-3">
@@ -76,19 +81,29 @@ function Frame2() {
                     </div>
                     <div className="options  d-flex flex-column text-start mb-2">
                       <p>Email address*</p>
+                      <div className="d-flex justify-content-center align-items-center"></div>
                       <input
                         type="text"
-                        className="option"
+                        className="option w-100"
                         placeholder="Enter email address"
                       />
                     </div>
                     <div className="options  d-flex flex-column text-start mb-2">
                       <p>Create password*</p>
-                      <input
-                        type="text"
-                        className="option"
-                        placeholder="Enter password"
-                      />
+                      <div className="d-flex justify-content-center align-items-center">
+                        <input
+                          type={show ? "text" : "password"}
+                          className="option w-100"
+                          placeholder="Enter password"
+                        />
+                        <p
+                          className="fw-bold"
+                          onClick={handleShow}
+                          style={{ fontSize: "12px", marginTop:"12px", marginLeft: "-40px", cursor:"pointer" }}
+                        >
+                          {show ? "Hide" : "Show"}
+                        </p>
+                      </div>
                     </div>
 
                     <div id="checkbox" className="d-flex mt-3">
